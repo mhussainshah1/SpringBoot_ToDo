@@ -28,14 +28,14 @@ public class HomeController {
 
     @PostMapping("/process")
     public String processForm(@Valid Task task,
-                              BindingResult result,
-                              @RequestParam("check") String completed) {
+                              BindingResult result/*,
+                              @RequestParam("check") String completed*/) {
         if (result.hasErrors()) {
             return "taskform";
         }
-        if(completed.equals("")){
-            task.setCompleted("@{/img/notcompleted.png}");
-        }
+//        if(completed.equals("")){
+//            task.setCompleted("@{/img/notcompleted.png}");
+//        }
         taskRepository.save(task);//generate SQL statement and insert into database
         return "redirect:/";
     }

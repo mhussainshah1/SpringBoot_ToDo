@@ -70,13 +70,13 @@
             <tr>
                 <td>Completed:</td>
                 <td>
-                    <!--<input th:field="*{completed}" type="checkbox"/>-->
-                    <input th:field="*{completed}" type="checkbox"
-                           name = "check" th:value="@{/img/completed.png}" checked="checked">
-                    <!--<select th:field="*{completed}">
+                    <!--<input name = "check" th:field="*{completed}" type="checkbox"/>-->
+                   <!-- <input th:field="*{completed}" type="checkbox"
+                           name = "check" th:value="@{/img/completed.png}" checked="checked">-->
+                    <select th:field="*{completed}">
                         <option th:value="@{/img/completed.png}" th:text="Completed"></option>
                         <option th:value="@{/img/notcompleted.png}" th:text="NotCompleted"></option>
-                    </select>-->
+                    </select>
                 </td>
                 <td><span th:errors="*{completed}" th:if="${#fields.hasErrors('completed')}"></span></td>
             </tr>

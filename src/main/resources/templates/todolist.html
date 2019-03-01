@@ -33,7 +33,7 @@
             <td><img th:src="${task.priority}" alt="Priority"></td>
             <!--<td th:text = "${#temporals.format(task.dueDate, 'yyyy-MM-dd')}"></td>-->
             <td th:text="${task.dueDate}"></td>
-            <td th:text="${task.completed}"><img th:src="${task.completed}" alt = "Completed">
+            <td><img th:src="${task.completed}" th:alt = "${task.completed}" > <!--th:text="${task.completed}"-->
             </td>
             <td>
                 <a th:href="@{/update/{id}(id=${task.id})}">Update</a>-<!-- Update -->
