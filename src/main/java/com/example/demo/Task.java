@@ -29,6 +29,7 @@ public class Task {
     private String description;
 
     @NonNull
+    @Size(min = 4)
     private String priority;
 
     @Autowired

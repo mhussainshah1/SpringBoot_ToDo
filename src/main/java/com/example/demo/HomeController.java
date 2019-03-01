@@ -36,7 +36,7 @@ public class HomeController {
 //        if(completed.equals("")){
 //            task.setCompleted("@{/img/notcompleted.png}");
 //        }
-        taskRepository.save(task);//generate SQL statement and insert into database
+        taskRepository.save(task);//generate SQL insert statement and insert data into database
         return "redirect:/";
     }
 
