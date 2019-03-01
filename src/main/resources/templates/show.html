@@ -29,16 +29,18 @@
         </tr>
         <tr>
             <td>Priority:</td>
-            <td><span th:text="${task.priority}"></span><br/></td>
+            <td><img th:src="${task.priority}" alt="Priority"></td>
         </tr>
         <tr>
             <td>Due Date:</td>
-            <td><span th:text="${task.dueDate}"></span><br/></td>
+            <td><span th:text="${task.dueDate}"></span></td>
             <!--<span th:text="${#temporals.format(task.dueDate, 'yyyy-MM-dd')}"></span><br/>-->
         </tr>
         <tr>
             <td>Completed:</td>
-            <td><span th:text="${task.completed}"></span><br/></td>
+            <td><td><img th:src="${task.completed}" alt = "Completed" text = "Completed">
+                <!--<span th:text="${task.completed}"></span>-->
+            </td>
         </tr>
     </table>
     <a th:href="@{/delete/{id}(id=${task.id})}">Delete this task</a>

@@ -37,6 +37,7 @@ public class Task {
     LocalDate dueDate;
 
     @NotNull
+    @Value("@{/img/notcompleted.png}")
     private String completed;
 
     public Task() {
