@@ -38,9 +38,7 @@
         </tr>
         <tr>
             <td>Completed:</td>
-            <td><td><img th:src="${task.completed}" alt = "Completed" th:text = "Completed">
-                <!--<span th:text="${task.completed}"></span>-->
-            </td>
+            <td><img th:src="${task.completed}" th:alt = "Completed"> <!-- th:text="${task.completed}" --><td>
         </tr>
     </table>
     <a th:href="@{/delete/{id}(id=${task.id})}">Delete this task</a>
