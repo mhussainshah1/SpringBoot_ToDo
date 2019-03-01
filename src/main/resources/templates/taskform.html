@@ -8,33 +8,81 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+    <link rel="stylesheet" th:href="@{/style.css}" type="text/css"/>
 
     <title>Course Form</title>
 
 </head>
 
 <body>
-<h1>Course Form</h1><br/>
-<form action="#" method="post" th:action="@{/process}" th:object="${task}">
-    <input th:field="*{id}" type="hidden"/>
+<div class="container" align="center">
+    <h1>Task Form</h1>
+    <form action="#" method="post" th:action="@{/process}" th:object="${task}">
+        <input th:field="*{id}" type="hidden"/>
 
-    Name:<input th:field="*{name}" type="text"/>
-    <span th:errors="*{name}" th:if="${#fields.hasErrors('name')}"></span><br/>
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td> <input th:field="*{name}" type="text"/></td>
+                <td><span th:errors="*{name}" th:if="${#fields.hasErrors('name')}"></span></td>
+            </tr>
+            <tr>
+                <td>Description:</td>
+                <td><textarea rows="3" th:field="*{description}"/></td>
+                <td> <span th:errors="*{description}" th:if="${#fields.hasErrors('description')}"></span></td>
+            </tr>
+            <tr>
+                <td>Priority:</td>
+                <td>
+                   <!-- <input th:field="*{priority}" type="text"/>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle"
+                                type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false">
+                            Select Priority
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">High</a>
+                            <a class="dropdown-item" href="#">Medium</a>
+                            <a class="dropdown-item" href="#">Low</a>
+                        </div>
+                    </div>
+                    <select>
+                        <option value="high" selected>High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>-->
+                    <select th:field="*{priority}">
+                        <option th:value="@{/img/high-priority.jpg}" th:text="High"></option>
+                        <option th:value="@{/img/medium-priority.jpg}" th:text="Medium"></option>
+                        <option th:value="@{/img/low-priority.jpg}" th:text="Low"></option>
+                    </select>
+                </td>
+                <td> <span th:errors="*{priority}" th:if="${#fields.hasErrors('priority')}"></span></td>
+            </tr>
+            <tr>
+                <td>Due Date:</td>
+                <td> <input th:field="*{dueDate}" type = "date" /> <!--name="dueDate"--></td>
+                <td> <span th:errors="*{dueDate}" th:if="${#fields.hasErrors('dueDate')}"></span></td>
+            </tr>
+            <tr>
+                <td>Completed:</td>
+                <td>
+                    <!--<input th:field="*{completed}" type="text"/>-->
+                    <select th:field="*{completed}">
+                        <option th:value="@{/img/completed.png}" th:text="completed"></option>
+                        <option th:value="@{/img/notcompleted.png}" th:text="not completed"></option>
+                    </select>
+                </td>
+                <td><span th:errors="*{completed}" th:if="${#fields.hasErrors('completed')}"></span></td>
+            </tr>
+        </table>
+        <input type="submit" value="Submit"/>
+    </form>
+</div>
 
-    Description:<textarea rows="3" th:field="*{description}"/>
-    <span th:errors="*{description}" th:if="${#fields.hasErrors('description')}"></span><br/>
-
-    Priority:<input th:field="*{priority}" type="text"/>
-    <span th:errors="*{priority}" th:if="${#fields.hasErrors('priority')}"></span><br/>
-
-    Due Date:<input th:field="*{{dueDate}}" type = "date" /> <!--name="dueDate"-->
-    <span th:errors="*{dueDate}" th:if="${#fields.hasErrors('dueDate')}"></span><br/>
-
-    Completed:<input th:field="*{completed}" type="text"/>
-    <span th:errors="*{completed}" th:if="${#fields.hasErrors('completed')}"></span><br/>
-
-    <input type="submit" value="Submit"/>
-</form>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

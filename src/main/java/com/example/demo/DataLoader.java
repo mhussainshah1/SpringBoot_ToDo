@@ -12,13 +12,13 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Task task = new Task("grocery", "chicken, eggs, bread", 1, true);
+        Task task = new Task("grocery", "chicken, eggs, bread", "/img/high-priority.jpg", "/img/completed.png");
         repository.save(task);
 
-        task = new Task("laundry", "white and color clothes", 1, true);
+        task = new Task("laundry", "white and color clothes", "/img/medium-priority.jpg", "/img/notcompleted.png");
         repository.save(task);
 
-        task = new Task("shopping", "glasses, napkins and spices", 1, true);
+        task = new Task("shopping", "glasses, napkins and spices", "/img/low-priority.jpg", "/img/completed.png");
         repository.save(task);
     }
 }

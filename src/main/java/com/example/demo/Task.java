@@ -29,8 +29,7 @@ public class Task {
     private String description;
 
     @NonNull
-    @Min(1)
-    private int priority;
+    private String priority;
 
     @Autowired
     @NotNull
@@ -38,13 +37,12 @@ public class Task {
     LocalDate dueDate;
 
     @NotNull
-    @Value("false")
-    private boolean completed;
+    private String completed;
 
     public Task() {
     }
 
-    public Task(@Size(min = 4) String name, @Size(min = 10) String description, @Min(1) int priority, @NotNull boolean completed) {
+    public Task(@Size(min = 4) String name, @Size(min = 10) String description, @Min(1) String priority, @NotNull String completed) {
         this.name = name;
         this.description = description;
         this.priority = priority;
@@ -76,11 +74,11 @@ public class Task {
         this.description = description;
     }
 
-    public int getPriority() {
+    public String getPriority() {
         return priority;
     }
 
-    public void setPriority(int priority) {
+    public void setPriority(String priority) {
         this.priority = priority;
     }
 
@@ -92,11 +90,11 @@ public class Task {
         this.dueDate = dueDate;
     }
 
-    public boolean isCompleted() {
+    public String getCompleted() {
         return completed;
     }
 
-    public void setCompleted(boolean completed) {
+    public void setCompleted(String completed) {
         this.completed = completed;
     }
 }
