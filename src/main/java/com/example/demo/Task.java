@@ -32,19 +32,17 @@ public class Task {
     @Size(min = 4)
     private String priority;
 
-    @Autowired
     @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    LocalDate dueDate;
+    private LocalDate dueDate;
 
     @NotNull
-    @Value("@{/img/notcompleted.png}")
-    private String completed;
+    private boolean completed;
 
     public Task() {
     }
 
-    public Task(@Size(min = 4) String name, @Size(min = 10) String description, @Min(1) String priority, @NotNull String completed) {
+    public Task(@Size(min = 4) String name, @Size(min = 10) String description, @Min(1) String priority, @NotNull boolean completed) {
         this.name = name;
         this.description = description;
         this.priority = priority;
@@ -92,11 +90,11 @@ public class Task {
         this.dueDate = dueDate;
     }
 
-    public String getCompleted() {
+    public boolean isCompleted() {
         return completed;
     }
 
-    public void setCompleted(String completed) {
+    public void setCompleted(boolean completed) {
         this.completed = completed;
     }
 }

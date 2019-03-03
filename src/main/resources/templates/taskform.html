@@ -1,19 +1,9 @@
 <!doctype html>
 <html lang="en" xmlns:th="www.thymeleaf.org">
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
-    <link rel="stylesheet" th:href="@{/style.css}" type="text/css"/>
-
+    <div th:replace="base::header"></div>
     <title>Course Form</title>
-
 </head>
-
 <body>
 <div class="container" align="center">
     <h1>Task Form</h1>
@@ -34,26 +24,6 @@
             <tr>
                 <td>Priority:</td>
                 <td>
-                   <!-- <input th:field="*{priority}" type="text"/>
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle"
-                                type="button" id="dropdownMenuButton"
-                                data-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false">
-                            Select Priority
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">High</a>
-                            <a class="dropdown-item" href="#">Medium</a>
-                            <a class="dropdown-item" href="#">Low</a>
-                        </div>
-                    </div>
-                    <select>
-                        <option value="high" selected>High</option>
-                        <option value="medium">Medium</option>
-                        <option value="low">Low</option>
-                    </select>-->
                     <select th:field="*{priority}">
                         <option th:value="@{/img/high-priority.jpg}" th:text="High"></option>
                         <option th:value="@{/img/medium-priority.jpg}" th:text="Medium"></option>
@@ -64,19 +34,13 @@
             </tr>
             <tr>
                 <td>Due Date:</td>
-                <td> <input th:field="*{dueDate}" type = "date" /> <!--name="dueDate"--></td>
+                <td> <input th:field="*{dueDate}" type = "date" /></td>
                 <td> <span th:errors="*{dueDate}" th:if="${#fields.hasErrors('dueDate')}"></span></td>
             </tr>
             <tr>
                 <td>Completed:</td>
                 <td>
-                    <!--<input name = "check" th:field="*{completed}" type="checkbox"/>-->
-                   <!-- <input th:field="*{completed}" type="checkbox"
-                           name = "check" th:value="@{/img/completed.png}" checked="checked">-->
-                    <select th:field="*{completed}">
-                        <option th:value="@{/img/completed.png}" th:text="Completed"></option>
-                        <option th:value="@{/img/notcompleted.png}" th:text="NotCompleted"></option>
-                    </select>
+                    <input name = "check" th:field="*{completed}" type="checkbox" th:value= "*{completed}"/>
                 </td>
                 <td><span th:errors="*{completed}" th:if="${#fields.hasErrors('completed')}"></span></td>
             </tr>
@@ -84,16 +48,7 @@
         <input type="submit" value="Submit"/>
     </form>
 </div>
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+<br/>
+<div th:replace="base::footer"></div>
 </body>
 </html>
