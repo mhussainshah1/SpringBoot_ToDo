@@ -6,7 +6,7 @@
 </head>
 <body>
 <div class="container" align="center">
-    <a href="/">Show All Tasks</a><br/>
+    <div th:replace="base::navlinks"></div>
     <table class="table">
         <tr>
             <td>Name:</td>
@@ -29,10 +29,10 @@
             <td>Completed:</td>
             <td>
                 <span th:if="${task.completed}">
-                    <img src="/img/completed.png" alt = "completed">
+                    <img src="https://res.cloudinary.com/mhussainshah1/image/upload/v1551473204/java-bootcamp/completed.png" alt = "completed">
                 </span>
                 <span th:unless ="${task.completed}">
-                    <img src="/img/notcompleted.png" alt = "not completed">
+                    <img src="https://res.cloudinary.com/mhussainshah1/image/upload/v1551473204/java-bootcamp/notcompleted.png" alt = "not completed">
                 </span>
             <td>
         </tr>
@@ -40,7 +40,7 @@
     <a th:href="@{/delete/{id}(id=${task.id})}">Delete this task</a>
 
     <h2>Remaining Tasks</h2>
-    <table class="table" style="width:100%">
+    <table class="table">
         <tr>
             <th>Name</th>
             <th>Description</th>
@@ -51,7 +51,9 @@
         <!--enhanced for loop-->
         <tr th:each="task : ${tasks}">
             <td th:text="${task.name}"></td>
-            <td th:text="${task.description}"></td>
+            <td>
+                <a th:href="@{/detail/{id}(id=${task.id})}">[[${task.description}]]</a>
+            </td>
             <td><img th:src="${task.priority}" alt="Priority"></td>
             <!--<td th:text = "${#temporals.format(task.dueDate, 'yyyy-MM-dd')}"></td>-->
             <td th:text="${task.dueDate}"></td>

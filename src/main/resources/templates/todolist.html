@@ -6,11 +6,10 @@
 
 </head>
 <body>
-<div class="container">
-    <!--All CRUD operations in one form-->
-    <h1>To Do List</h1><br/>
-    <a href="/add">Add a Task</a><br/><!-- Create -->
-    <table style="width:100%">
+<div class="container" align="center">
+    <div th:replace="base::navlinks"></div>
+    <h2>To Do List</h2><br/>
+    <table class="table">
         <tr>
             <th>Name</th>
             <th>Description</th>
@@ -21,21 +20,22 @@
         <!--enhanced for loop-->
         <tr th:each="task : ${tasks}">
             <td th:text="${task.name}"></td>
-            <td th:text="${task.description}"></td>
+            <td>
+                <a th:href="@{/detail/{id}(id=${task.id})}">[[${task.description}]]</a>
+            </td>
             <td><img th:src="${task.priority}" alt="Priority"></td>
             <!--<td th:text = "${#temporals.format(task.dueDate, 'yyyy-MM-dd')}"></td>-->
             <td th:text="${task.dueDate}"></td>
             <td>
                 <span th:if="${task.completed}">
-                    <img src="/img/completed.png" alt = "completed">
+                    <img src="https://res.cloudinary.com/mhussainshah1/image/upload/v1551473204/java-bootcamp/completed.png" alt = "completed">
                 </span>
                 <span th:unless ="${task.completed}">
-                    <img src="/img/notcompleted.png" alt = "not completed">
+                    <img src="https://res.cloudinary.com/mhussainshah1/image/upload/v1551473204/java-bootcamp/notcompleted.png" alt = "not completed">
                 </span>
             </td>
             <td>
                 <a th:href="@{/update/{id}(id=${task.id})}">Update</a>-<!-- Update -->
-                <a th:href="@{/detail/{id}(id=${task.id})}">Details</a>-<!-- Read -->
                 <a th:href="@{/delete/{id}(id=${task.id})}">Delete</a><!-- Delete -->
             </td>
         </tr>

@@ -67,4 +67,9 @@ public class HomeController {
         taskRepository.deleteById(id);
         return "redirect:/";
     }
+
+    @RequestMapping("/about")
+    public String getAbout(){
+        return "about";
+    }
 }

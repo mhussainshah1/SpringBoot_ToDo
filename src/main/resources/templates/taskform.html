@@ -2,11 +2,13 @@
 <html lang="en" xmlns:th="www.thymeleaf.org">
 <head>
     <div th:replace="base::header"></div>
-    <title>Course Form</title>
+    <title>Task Form</title>
 </head>
 <body>
+
 <div class="container" align="center">
-    <h1>Task Form</h1>
+    <div th:replace="base::navlinks"></div>
+    <h2>Task Form</h2>
     <form action="#" method="post" th:action="@{/process}" th:object="${task}">
         <input th:field="*{id}" type="hidden"/>
 
@@ -25,9 +27,9 @@
                 <td>Priority:</td>
                 <td>
                     <select th:field="*{priority}">
-                        <option th:value="@{/img/high-priority.jpg}" th:text="High"></option>
-                        <option th:value="@{/img/medium-priority.jpg}" th:text="Medium"></option>
-                        <option th:value="@{/img/low-priority.jpg}" th:text="Low"></option>
+                        <option th:value="@{https://res.cloudinary.com/mhussainshah1/image/upload/v1551473204/java-bootcamp/high-priority.jpg}" th:text="High"></option>
+                        <option th:value="@{https://res.cloudinary.com/mhussainshah1/image/upload/v1551473204/java-bootcamp/medium-priority.png}" th:text="Medium"></option>
+                        <option th:value="@{https://res.cloudinary.com/mhussainshah1/image/upload/v1551473204/java-bootcamp/low-priority.jpg}" th:text="Low"></option>
                     </select>
                 </td>
                 <td> <span th:errors="*{priority}" th:if="${#fields.hasErrors('priority')}"></span></td>
