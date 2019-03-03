@@ -7,6 +7,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.function.Consumer;
 
 @Controller
 public class HomeController {
@@ -39,7 +43,16 @@ public class HomeController {
 
     @RequestMapping("/detail/{id}")
     public String showCourse(@PathVariable("id") long id, Model model) {
-        model.addAttribute("task", taskRepository.findById(id).get());
+        Task task = taskRepository.findById(id).get();
+        List<Task> list = new ArrayList<>();
+        taskRepository.findAll().forEach(t -> {
+            if(!t.equals(task)){
+                list.add(t);
+                System.out.println(t);
+            }
+        });
+        model.addAttribute("task", task);
+        model.addAttribute("tasks", list);
         return "show";
     }
 

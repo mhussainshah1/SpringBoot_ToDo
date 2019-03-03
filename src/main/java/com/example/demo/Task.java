@@ -41,6 +41,7 @@ public class Task {
     }
 
     public Task(@Size(min = 4) String name, @Size(min = 10) String description, @Min(1) String priority, @NotNull boolean completed) {
+        this();
         this.name = name;
         this.description = description;
         this.priority = priority;
@@ -94,5 +95,16 @@ public class Task {
 
     public void setCompleted(boolean completed) {
         this.completed = completed;
+    }
+
+    @Override
+    public String toString() {
+        String string =
+                "Name = " + name +"\n"+
+                "Description = " + description +"\n"+
+                "Priority = " + priority +"\n"+
+                "Due Date = " + dueDate +"\n"+
+                "Completed = " + completed;
+        return string;
     }
 }

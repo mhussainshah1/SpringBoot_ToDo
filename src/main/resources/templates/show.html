@@ -5,9 +5,9 @@
     <title>Show</title>
 </head>
 <body>
-<div class="container">
+<div class="container" align="center">
     <a href="/">Show All Tasks</a><br/>
-    <table>
+    <table class="table">
         <tr>
             <td>Name:</td>
             <td><span th:text="${task.name}"></span></td>
@@ -38,6 +38,33 @@
         </tr>
     </table>
     <a th:href="@{/delete/{id}(id=${task.id})}">Delete this task</a>
+
+    <h2>Remaining Tasks</h2>
+    <table class="table" style="width:100%">
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Priority</th>
+            <th>Due Date</th>
+            <th>completed</th>
+        </tr>
+        <!--enhanced for loop-->
+        <tr th:each="task : ${tasks}">
+            <td th:text="${task.name}"></td>
+            <td th:text="${task.description}"></td>
+            <td><img th:src="${task.priority}" alt="Priority"></td>
+            <!--<td th:text = "${#temporals.format(task.dueDate, 'yyyy-MM-dd')}"></td>-->
+            <td th:text="${task.dueDate}"></td>
+            <td>
+                <span th:if="${task.completed}">
+                    <img src="/img/completed.png" alt = "completed">
+                </span>
+                <span th:unless ="${task.completed}">
+                    <img src="/img/notcompleted.png" alt = "not completed">
+                </span>
+            </td>
+        </tr>
+    </table>
 </div>
 <br/>
 <div th:replace="base::footer"></div>
